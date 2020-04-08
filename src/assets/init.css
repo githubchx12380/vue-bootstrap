@@ -1,0 +1,18 @@
+@charset "utf-8";
+/*CSS 初始化*/
+body,v,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td{margin:0;padding:0;}
+body{font-size:14px/1.5 "Helvetica Neue", "Helvetica,Arial", "Microsoft Yahei", "Hiragino Sans GB", HeitiSC, "WenQuanYi Micro Hei", sans-serif;background-color: #eff0f3;}
+fieldset,img{border:0;}
+img{display:block;}
+ol,ul{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+em{font-style:normal;}
+input,button,select,textarea{outline:none;}
+/*textarea { resize:none; }*/
+a{color:#000;text-decoration:none;}
+a:hover{text-decoration:none;}
+a:focus{outline:none;-moz-outline:none;}/*解决去除 a 链接点击后有一个虚线的边框出现*/
+
+/*公用样式*/
+
+
