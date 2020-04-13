@@ -6,6 +6,9 @@ import './plugins/element.js'
 import './assets/style.css'
 import less from 'less'
 import 'element-ui/lib/theme-chalk/display.css';
+import api from '../http'
+Vue.prototype.$http = api
+Vue.prototype.$bus = new Vue()
 Vue.use(less)
 
 new Vue({

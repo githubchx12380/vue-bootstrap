@@ -1,8 +1,10 @@
 <template>
  <div class="nav-bar-items">
-    <div v-for="(item,index) in category" :key="index" class="nav-item" @click="NavItemClick(index)" :class="{itembackcolor:current == index&&$route.path == '/category'}">
+    <div v-for="(item,index) in category" 
+    :key="index" class="nav-item" @click="NavItemClick(index,item.chrome_category_id,item.chrome_category_title)" 
+    :class="{itembackcolor:current == index&&$route.path.indexOf('/category') != -1}">
         <span class="icon-home"></span>
-        <span>{{item}}</span>
+        <span>{{item.chrome_category_title}}</span>
     </div>
  </div>
 </template>
@@ -24,10 +26,12 @@ export default {
     path:String
   },
   methods:{
-      NavItemClick(index) {
-              this.$router.push(this.path)
+      NavItemClick(index,id,title) {
+              this.$router.push(this.path + '/' + id)
+              this.$route.meta.fenlei = title    
+              
               this.current = index
-              this.$emit('hiddenDrawer',index)
+              this.$emit('hiddenDrawer')
       }
   },
 }

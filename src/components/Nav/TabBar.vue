@@ -1,6 +1,5 @@
 <template>
   <div>
-    <el-row class="rowbox">
         <el-col :span="4" class="tab-bar-left hidden-sm-only hidden-xs-only">
         <div class="grid-content bg-purple">
             <nav-bar-parent :fontw="true" path="/index">
@@ -12,7 +11,7 @@
                     <span class="icon-home"></span>
                     <span>软件</span>
             </nav-bar-parent>
-            <nav-bar-item path="/category" ref="navbaritem" :category="['热门','安卓','ios','PC','游戏','办公','影音','购物','安全','美化','有趣','工具']">
+            <nav-bar-item path="/category" ref="navbaritem" :category="category">
             </nav-bar-item>
             <nav-bar-parent :fontw="true"
              path="/jiaocheng">
@@ -24,12 +23,6 @@
         <el-col class="hidden-md-and-up">
             <drawer></drawer>
         </el-col>
-        <el-col :span="19" :xs="{span:24}"  class="row-content">
-            <div class="grid-content bg-purple-light">
-                <router-view></router-view>
-            </div>
-        </el-col>
-    </el-row>
   </div>
 </template>
 
@@ -38,6 +31,11 @@ import NavBarParent from '../common/Nav_bar_parent'
 import NavBarItem from '../common/Nav_bar_item'
 import Drawer from '../Nav/Drawer'
 export default {
+    data() {
+        return {
+            category:[],
+        }
+    },
     components:{
         NavBarParent,
         NavBarItem,
@@ -46,18 +44,24 @@ export default {
     methods:{
         currentinit() {
             this.$refs.navbaritem.current = 0
-        }
+            this.$router.push('/category/' + this.category[0].chrome_category_id)
+             this.$route.meta.fenlei = '效率'   
+        },
+        async categoryData() {
+            const res = await this.$http.categoryData()
+            this.category = res.data
+        },
+        
+    },
+    
+    created() {
+        this.categoryData()
     }
 }
 </script>
 
 <style lang="less">
-.rowbox{
-    padding-top: 20px;
-    .row-content{
-        padding: 0 10px;
-    }
-}
+
 .tab-bar-left{
     height: 616px;
     padding: 10px;

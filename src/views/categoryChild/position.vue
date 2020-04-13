@@ -2,8 +2,9 @@
       <div class="title">
           <div class="position-content">
             <span><a href="/index">首页</a></span>/
-            <span><a :href="routePath">软件</a></span>/
-            <span><a href="">热门</a></span>
+            <span><a href="/category/3">插件</a></span>/
+            <span><a href="javascript:;"> {{fenlei}}</a></span>
+           
           </div>
           <div class="new-content">
             <div @click="newTitle(index)"
@@ -16,15 +17,20 @@
 
 <script>
 export default {
+    props:['seek'],
     data() {
         return {
             newcontent:['推荐','最热','最新'],
-            currentChild:0
+            currentChild:0,
+            fenlei1:''
         }
     },
     computed:{
-        routePath() {
-            return this.$route.path
+        fenlei() {
+           if(this.fenlei1 != ''){
+               return '搜索结果'
+           }
+            return this.$route.meta.fenlei
         }
     },
     methods:{

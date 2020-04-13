@@ -14,7 +14,7 @@
   <el-col :span="12" class="right">
       <div class="grid-content bg-purple-light">
           <div class="form-nav">
-              <input type="text" placeholder="搜索软件">
+              <input type="text" placeholder="搜索软件" v-model="model.val">
               <button class="icon-search" @click="formNavsubmit"></button>
           </div>
       </div>
@@ -26,9 +26,21 @@
 </template>
 <script>
 export default {
+    data() {
+        return {
+            model:{page:0,pagesize:16,val:''}
+        }
+    },
     methods:{
-        formNavsubmit() {
-            console.log(1);
+        async formNavsubmit() {
+           if(!this.model.val){
+               this.$message({
+                   message:'请输入内容'
+               })
+               return
+           }
+           const res = await this.$http.inputLike(this.model)
+           this.$bus.$emit('inputVal',res.data,this.model.val)
         }
     }
 }
@@ -68,6 +80,7 @@ export default {
                 color: white;
             }
             button{
+                cursor: pointer;
                 position:absolute;
                 right: 2px;
                 top: 7px;

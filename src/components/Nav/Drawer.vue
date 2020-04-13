@@ -15,7 +15,7 @@
         close-on-press-escape>
         <nav-bar-parent @click.native="hiddenDrawer" :fontw="true" path="/index"><span class="icon-home"></span><span>首页</span></nav-bar-parent>
             <nav-bar-parent  :fontw="true" path="/category" @click.native="hiddenDrawer"><span class="icon-home"></span><span>软件</span></nav-bar-parent>
-            <nav-bar-item @hiddenDrawer="hiddenDrawer" path="/category" ref="navbaritem" :category="['热门','安卓','ios','PC','游戏','办公','影音','购物','安全','美化','有趣','工具']">
+            <nav-bar-item @hiddenDrawer="hiddenDrawer" path="/category" ref="navbaritem" :category="category">
             </nav-bar-item>
             <nav-bar-parent @click.native="hiddenDrawer" :fontw="true" path="/jiaocheng"><span class="icon-home"></span><span>教程</span></nav-bar-parent>
         </el-drawer>
@@ -28,6 +28,7 @@ import NavBarItem from '../common/Nav_bar_item'
   export default {
     data() {
       return {
+        category:[],
         drawer: false,
         direction: 'ltr',
       };
@@ -45,7 +46,16 @@ import NavBarItem from '../common/Nav_bar_item'
       },
       hiddenDrawer() {
          this.$refs.drawerSearch.handleClose()
+         console.log(1);
+         
+      },
+      async categoryData() {
+           const res = await this.$http.categoryData()
+           this.category = res.data
       }
+    },
+    created() {
+      this.categoryData()
     }
   };
 </script>
