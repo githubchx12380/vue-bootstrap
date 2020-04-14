@@ -2,12 +2,12 @@
   <div>
         <el-col :span="4" class="tab-bar-left hidden-sm-only hidden-xs-only">
         <div class="grid-content bg-purple">
-            <nav-bar-parent :fontw="true" path="/index">
+            <nav-bar-parent :fontw="true" path="/">
                     <span class="icon-home"></span>
                     <span>首页</span>
             </nav-bar-parent>
             <nav-bar-parent :fontw="true"
-             path="/category" @click.native="currentinit">
+             path="/category/3" @click.native="currentinit">
                     <span class="icon-home"></span>
                     <span>软件</span>
             </nav-bar-parent>
@@ -45,7 +45,6 @@ export default {
         currentinit() {
             this.$refs.navbaritem.current = 0
             this.$router.push('/category/' + this.category[0].chrome_category_id)
-             this.$route.meta.fenlei = '效率'   
         },
         async categoryData() {
             const res = await this.$http.categoryData()

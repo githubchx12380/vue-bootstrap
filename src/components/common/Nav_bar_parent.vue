@@ -19,8 +19,9 @@ export default {
   },
   computed: {
     fontwparent(){
+       
         if(this.path){
-          return this.$route.path.indexOf(this.path) !== -1
+          return this.$route.path == this.path && this.$route.path.indexOf(this.path) != -1
         }
     }
   }

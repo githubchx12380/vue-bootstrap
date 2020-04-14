@@ -25,11 +25,6 @@ export default {
     NavTop,
     TabBar
   },
-  // methods:{
-  //   inputVal(val) {
-  //   this.valueinput = val
-  //   }
-  // }
 }
 </script>
 

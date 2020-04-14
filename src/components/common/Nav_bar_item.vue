@@ -29,7 +29,6 @@ export default {
       NavItemClick(index,id,title) {
               this.$router.push(this.path + '/' + id)
               this.$route.meta.fenlei = title    
-              
               this.current = index
               this.$emit('hiddenDrawer')
       }

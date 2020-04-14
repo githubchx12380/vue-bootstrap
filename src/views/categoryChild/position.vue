@@ -6,7 +6,7 @@
             <span><a href="javascript:;"> {{fenlei}}</a></span>
            
           </div>
-          <div class="new-content">
+          <div class="new-content hidden-xs-only" >
             <div @click="newTitle(index)"
             :class="{backcolorActive:index == currentChild}"
              v-for="(item,index) in newcontent"
@@ -29,6 +29,9 @@ export default {
         fenlei() {
            if(this.fenlei1 != ''){
                return '搜索结果'
+           }
+           if(this.$route.path == '/category/3'){
+               return '效率'
            }
             return this.$route.meta.fenlei
         }

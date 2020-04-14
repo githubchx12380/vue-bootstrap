@@ -1,19 +1,21 @@
 <template>
   <div class="content-box">
       <posi-tion @newcontent="newcontent" ref="resultIf"></posi-tion> 
-    <el-row>
+    <el-row v-if="model.length">
         <detail-col v-for="(item,index) in model" :key="index" :itemData="item"></detail-col>
     </el-row>
    
-    <el-pagination
-        class="pagenation"
-        background
+   <div class="pagenation">
+        <el-pagination
+        class="elPage"
+         :pager-count="5"
         layout="prev, pager, next"
         @current-change="currentPage"
         :hide-on-single-page='true'
         v-if="currentKeep"
         :total="len * 10">
     </el-pagination>
+   </div>
   </div>
 </template>
 
@@ -41,6 +43,7 @@ export default {
         currentPage(elementPage) {
             this.filters.page = elementPage - 1  //后台从0开始筛选
             this.viewData()  //点击分页调用函数,发请求
+          window.scroll(0, 0)
         },
         async viewData() {  //发送请求,获取数据
           let str = ''
@@ -48,8 +51,6 @@ export default {
             str +='&' +  key + '=' + this.filters[key]
           }
           str = str.replace('&','?')
-         
-          
           if(this.filters.val != undefined){
             var res = await this.$http.inputLike(this.filters)
           }else{
@@ -97,7 +98,17 @@ export default {
     padding: 10px 10px;
     border-radius: 15px;
     min-height: 595px;
-    position: relative;
-    
+    .pagenation{
+        width: 100%;
+        position: relative;
+        height: 30px;
+        .elPage{
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    }
+   
 }
 </style>

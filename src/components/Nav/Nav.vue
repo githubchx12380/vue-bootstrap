@@ -51,6 +51,7 @@ export default {
     padding: 8px 0 5px 0;
     background-color: #2c3742;
     .left{
+        padding-left: 20px;
         a{
             h1{
                 display: flex;

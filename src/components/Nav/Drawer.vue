@@ -4,7 +4,6 @@
         </el-radio-group>
 
         <el-button @click="drawer = true" type="info" class="drawerBtn icon-menu" >
-            
         </el-button>
         <el-drawer
         :visible.sync="drawer"
@@ -13,8 +12,8 @@
         ref="drawerSearch"
         size="80%"
         close-on-press-escape>
-        <nav-bar-parent @click.native="hiddenDrawer" :fontw="true" path="/index"><span class="icon-home"></span><span>首页</span></nav-bar-parent>
-            <nav-bar-parent  :fontw="true" path="/category" @click.native="hiddenDrawer"><span class="icon-home"></span><span>软件</span></nav-bar-parent>
+        <nav-bar-parent @click.native="hiddenDrawer" :fontw="true" path="/"><span class="icon-home"></span><span>首页</span></nav-bar-parent>
+            <nav-bar-parent  :fontw="true" path="/category/3" @click.native="hiddenDrawers" ><span class="icon-home"></span><span>软件</span></nav-bar-parent>
             <nav-bar-item @hiddenDrawer="hiddenDrawer" path="/category" ref="navbaritem" :category="category">
             </nav-bar-item>
             <nav-bar-parent @click.native="hiddenDrawer" :fontw="true" path="/jiaocheng"><span class="icon-home"></span><span>教程</span></nav-bar-parent>
@@ -46,8 +45,14 @@ import NavBarItem from '../common/Nav_bar_item'
       },
       hiddenDrawer() {
          this.$refs.drawerSearch.handleClose()
-         console.log(1);
-         
+        
+      },
+      hiddenDrawers() {
+        
+        this.$refs.navbaritem.current = 0
+        this.$router.push('/category/' + this.category[0].chrome_category_id)
+        this.$route.meta.fenlei = '效率'
+        this.$refs.drawerSearch.handleClose()
       },
       async categoryData() {
            const res = await this.$http.categoryData()
@@ -65,7 +70,7 @@ import NavBarItem from '../common/Nav_bar_item'
     top: -53px;
     left: 0;
     height: 53px;
-    width: 20px;
+    width: 30px;
     outline: none;
     background-color: #2c3742 !important;
     font-size:20px !important;

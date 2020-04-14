@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '../views/Index.vue'
+import Index from '../views/index.vue'
 import jiaocheng from '../views/jiaocheng.vue'
 import category from '../views/category.vue'
 import chromeDetail from '../views/chromeDetail.vue'
@@ -8,11 +8,7 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path:'',
-    redirect:'/index'
-  },
-  {
-    path: '/index',
+    path: '/',
     component:Index
   },
   {

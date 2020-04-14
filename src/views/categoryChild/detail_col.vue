@@ -29,7 +29,7 @@ export default {
         >a{
             
             box-shadow: 0 0 10px #dedede;
-            padding: 10px 10px;
+            padding: 10px;
             display: flex;
             align-items: center;
             >div{
@@ -37,6 +37,8 @@ export default {
                 padding-top: 5px;
                 flex: 1;
                 p:nth-child(1){
+                    text-align: center;
+                    height: 33px;
                     font-weight: 700;
                     font-size: 13px;
                     color: rgb(136, 136, 136);
