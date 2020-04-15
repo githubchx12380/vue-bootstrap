@@ -17,7 +17,7 @@
 
 <script>
 export default {
-    props:['seek'],
+    props:['componen'],
     data() {
         return {
             newcontent:['推荐','最热','最新'],
@@ -32,6 +32,9 @@ export default {
            }
            if(this.$route.path == '/category/3'){
                return '效率'
+           }
+           if(this.componen){
+               return this.componen.split(' ')[0] + this.componen.split(' ')[1]
            }
             return this.$route.meta.fenlei
         }

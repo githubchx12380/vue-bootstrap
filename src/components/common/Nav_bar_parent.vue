@@ -51,7 +51,7 @@ export default {
     cursor: pointer;
 }
 .fontw{
-   padding: 15px;
+   padding: 12px 15px;
    font-weight: 700;
 }
 .parentcolor{

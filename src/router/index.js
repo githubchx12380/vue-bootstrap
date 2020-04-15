@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Index from '../views/index.vue'
 import jiaocheng from '../views/jiaocheng.vue'
 import category from '../views/category.vue'
-import chromeDetail from '../views/chromeDetail.vue'
+import Detail from '../views/Detail.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -26,7 +26,7 @@ Vue.use(VueRouter)
   },
   {
     path:'/detail/:id',
-    component:chromeDetail,
+    component:Detail,
     props:true
   }
 ]

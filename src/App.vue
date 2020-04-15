@@ -9,12 +9,14 @@
             </div>
         </el-col>
     </el-row>
+    <footers></footers>
   </div>
 </template>
 
 <script>
 import NavTop from './components/Nav/Nav'  //导航
 import TabBar from './components/Nav/TabBar'
+import footers from '../src/views/footers'
 export default {
   data() {
     return {
@@ -23,7 +25,8 @@ export default {
   },
   components:{
     NavTop,
-    TabBar
+    TabBar,
+    footers
   },
 }
 </script>

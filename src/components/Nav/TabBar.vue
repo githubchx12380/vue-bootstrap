@@ -18,6 +18,11 @@
                     <span class="icon-home"></span>
                     <span>教程</span>
             </nav-bar-parent>
+            <nav-bar-parent :fontw="true"
+             path="/jiaocheng">
+                    <span class="icon-home"></span>
+                    <span>公告</span>
+            </nav-bar-parent>
         </div>
         </el-col>
         <el-col class="hidden-md-and-up">
